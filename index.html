@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        body {
+            /* YOUR CUSTOM BACKGROUND */
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #fff0f5; 
+
+            font-family: 'Indie Flower', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            color: #5a3e3e;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85); 
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 90%;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(5px);
+            position: relative; 
+            z-index: 10; 
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1, h2, p {
+            margin: 10px 0;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            background-color: #ffb7b2;
+            border: 2px solid #ff9e99;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 100;
+            transition: transform 0.2s; 
+        }
+
+        /* --- THE GLIDE LOGIC --- */
+        #no-btn {
+            transition: all 0.3s ease; 
+            position: relative;
+            z-index: 9999; 
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #ff9e99;
+            color: white;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px; /* Made it slightly taller for your long letter */
+            border: 2px dashed #ffb7b2;
+            border-radius: 10px;
+            padding: 10px;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1rem;
+            background: #fff;
+            resize: none;
+            line-height: 1.5;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .photo-grid img {
+            margin-bottom: 0;
+            border-radius: 5px;
+            height: 100px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="screen1">
+        <img id="cat-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXNpeXJ2eXU4bnB2bm14d2l4Z2l4Z2l4Z2l4Z2l4Z2l4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Cat">
+        <h2 id="question">Hey! I made something for you.<br>Will you see it?</h2>
+        <div class="btn-group">
+            <button onclick="nextScreen(2)">Yes</button>
+            <button id="no-btn" onmouseover="moveButton()" onclick="handleNoClick()">No</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="screen2">
+        <img src="yes.jpg" alt="Happy Cat">
+        <h2>Happy new year my kuchupuchu!!</h2>
+        <p>Click below for the surprise!</p>
+        <div class="btn-group">
+            <button onclick="nextScreen(3)">🎁 Open Gift</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="screen3">
+        <h2>2025 Summary!</h2>
+        <div class="photo-grid">
+            <img src="k1.jpg" alt="Memory 1">
+            <img src="k6.jpg" alt="Memory 2">
+            <img src="k3.jpg" alt="Memory 3">
+            <img src="k4.jpg" alt="Memory 4">
+        </div>
+        <div class="btn-group">
+            <button onclick="nextScreen(4)">Next</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="screen4">
+        <img src="https://cdn-icons-png.flaticon.com/512/2823/2823336.png" style="width: 80px;" alt="Letter">
+        <h2>Letter For You</h2>
+        <textarea readonly>
+My Shubhi,
+
+As this year comes to an end, I’ve been thinking about how much has changed. A lot of things happened this year, but above all else, I am most thankful to God for making our paths cross.
+
+You didn’t just come into my life; you changed it for the better. You taught me how to truly live. You showed me how to understand my own emotions and how to fight the things I had been pushing down for so long. You taught me how to feel again.
+
+Thank you for making this the best year of my life. I also want to say I’m sorry if I wasn't able to make it as great for you as I wanted to. My prayer for this new year is that I can continue to fix and understand myself, so I can be the man who loves, respects, and understands your emotions the way you deserve.
+
+Thank you for everything. I love you. Happy New Year. ♥️
+        </textarea>
+        <div class="btn-group">
+            <button onclick="nextScreen(5)">Next</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="screen5">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGQ1eXJ2eXU4bnB2bm14d2l4Z2l4Z2l4Z2l4Z2l4Z2l4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/10MSCF1viNV7zy/giphy.gif" alt="Hugging Cats">
+        <h3>For 2026, I wish you:</h3>
+        <ul style="text-align: left; padding-left: 40px; list-style-type: '💜 '; ">
+            <li>Peace</li>
+            <li>Lots of laughter</li>
+            <li>Good sleep fr</li>
+            <li>Main-character energy ✨</li>
+        </ul>
+        <div class="btn-group">
+            <button onclick="nextScreen(6)">One last thing...</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="screen6">
+        <div style="background: white; padding: 15px 15px 40px 15px; transform: rotate(-3deg); box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+            <img src="k2.jpg" style="margin:0; border-radius: 0;" alt="Us">
+            <h2 style="font-family: 'Courier New', monospace; margin-top: 10px;">I Love You</h2>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function nextScreen(screenNumber) {
+            if (screenNumber === 2) {
+                var audio = document.getElementById('bg-music');
+                audio.play().catch(function(error) {
+                    console.log("Audio play failed: " + error);
+                });
+            }
+
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(div => div.classList.add('hidden'));
+            const nextDiv = document.getElementById('screen' + screenNumber);
+            if (nextDiv) {
+                nextDiv.classList.remove('hidden');
+            }
+        }
+
+        let runawayMode = false;
+
+        function handleNoClick() {
+            if (runawayMode) {
+                moveButton();
+            } else {
+                angryCat();
+            }
+        }
+
+        function angryCat() {
+            const img = document.getElementById('cat-img');
+            const title = document.getElementById('question');
+            
+            img.src = "no.jpg"; 
+            
+            title.innerHTML = "HOW DARE YOU! <br> (Try clicking Yes)";
+            title.style.color = "red";
+            runawayMode = true;
+        }
+
+        function moveButton() {
+            if (!runawayMode) return;
+            
+            const noBtn = document.getElementById('no-btn');
+            noBtn.style.position = 'fixed';
+            
+            const randomLeft = Math.floor(Math.random() * 80) + 10;
+            const randomTop = Math.floor(Math.random() * 80) + 10;
+
+            noBtn.style.left = randomLeft + '%';
+            noBtn.style.top = randomTop + '%';
+        }
+        
+        document.getElementById('bg-music').volume = 0.2;
+    </script>
+</body>
+</html>
